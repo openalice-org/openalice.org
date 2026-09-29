@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenAlice</title>
+<meta name="description" content="OpenAlice: charting the invisible college. In the making.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #1d1b18;
+    --muted: #6b6b6b;
+    --line: #e4e4e4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141312; --ink: #ece7de; --muted: #9a9387; --line: #34312c; }
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+  main { max-width: 34rem; width: 100%; }
+  h1 {
+    font-weight: 400;
+    font-size: clamp(2.6rem, 9vw, 4.2rem);
+    letter-spacing: -0.02em;
+    margin: 0 0 0.2em;
+  }
+  .lede {
+    font-size: clamp(1.2rem, 4vw, 1.45rem);
+    font-style: italic;
+    margin: 0 0 1.6em;
+  }
+  p { line-height: 1.6; margin: 0 0 1em; }
+  footer {
+    margin-top: 2.4em;
+    padding-top: 1em;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-family: ui-sans-serif, -apple-system, "Helvetica Neue", sans-serif;
+  }
+  a { color: inherit; text-underline-offset: 3px; }
+  .mark {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    width: clamp(70px, 12.1vw, 132px);
+    height: auto;
+  }
+  @media (prefers-color-scheme: dark) { .mark { filter: invert(1) brightness(0.92); } }
+  @media (max-width: 520px) { .mark { position: static; display: block; margin: 0 0 28px; } body { align-items: flex-start; } }
+</style>
+</head>
+<body>
+<main>
+  <img class="mark" src="alice.png" alt="" width="420" height="420">
+  <h1>OpenAlice</h1>
+  <p class="lede">Charting the invisible college</p>
+  <p>An open lens on the world of research that follows people rather than papers. It is in the making.</p>
+  <footer>
+    Open source under the MIT License ·
+    <a href="https://github.com/openalice-org">github.com/openalice-org</a>
+  </footer>
+</main>
+</body>
+</html>
