@@ -6,28 +6,40 @@
 <title>OpenAlice</title>
 <meta name="description" content="OpenAlice: charting the invisible college. In the making.">
 <style>
+  :root { --ink: #1d1b18; --muted: #6b6b6b; --line: #d9d8d2; }
   html, body { height: 100%; margin: 0; }
-  body { display: flex; flex-direction: column; }
+  body { display: flex; flex-direction: column; background: #fff; }
   iframe { display: block; flex: 1 1 auto; width: 100%; min-height: 0; border: 0; }
   footer {
     flex: 0 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 44px;
-    font: 12px/1.4 Georgia, "Times New Roman", serif;
-    color: #6b6b6b;
+    justify-content: flex-end;
+    gap: 16px;
+    padding: 12px 44px;
+    border-top: 1px solid var(--line);
+    font: 15px/1.4 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    color: var(--ink);
   }
-  footer a { color: inherit; text-underline-offset: 3px; }
-  footer a:hover { color: #1a1a1a; }
-  footer img { display: block; width: 24px; height: 24px; }
+  footer .mark { display: block; line-height: 0; }
+  footer .mark img { display: block; width: 40px; height: 40px; }
+  footer .divider { width: 1px; height: 28px; background: var(--ink); }
+  footer .links { display: flex; align-items: center; gap: 8px; }
+  footer .sep { color: var(--muted); }
+  footer a { color: inherit; text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 3px; }
+  footer a:hover { text-decoration-color: var(--ink); }
 </style>
 </head>
 <body>
 <iframe src="https://d385pc8be2cjhs.cloudfront.net/index.html" title="OpenAlice" allowfullscreen></iframe>
 <footer>
-  <span>MIT License · <a href="https://github.com/openalice-org/openalice.org" target="_blank" rel="noopener noreferrer">Source</a></span>
-  <a href="/" aria-label="OpenAlice"><img src="alice.png" alt="OpenAlice" width="24" height="24"></a>
+  <a class="mark" href="/" aria-label="OpenAlice"><img src="alice.png" alt="OpenAlice" width="40" height="40"></a>
+  <span class="divider" aria-hidden="true"></span>
+  <span class="links">
+    <span>MIT License</span>
+    <span class="sep" aria-hidden="true">·</span>
+    <a href="https://github.com/openalice-org/openalice.org" target="_blank" rel="noopener noreferrer">Source</a>
+  </span>
 </footer>
 <noscript>
   <p><a href="https://d385pc8be2cjhs.cloudfront.net/index.html">Open OpenAlice</a></p>
