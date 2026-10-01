@@ -24,7 +24,9 @@
   footer .mark { display: block; line-height: 0; }
   footer .mark img { display: block; width: 40px; height: 40px; }
   footer .divider { width: 1px; height: 28px; background: var(--ink); }
-  footer .links { display: flex; align-items: center; gap: 8px; }
+  /* padding-top optically centres the serif text on the divider and mark:
+     the caps' ink sits ~1.5px above the line box's centre. */
+  footer .links { display: flex; align-items: center; gap: 8px; padding-top: 3px; }
   footer .sep { color: var(--muted); }
   footer a { color: inherit; text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 3px; }
   footer a:hover { text-decoration-color: var(--ink); }
