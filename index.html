@@ -7,11 +7,28 @@
 <meta name="description" content="OpenAlice: charting the invisible college. In the making.">
 <style>
   html, body { height: 100%; margin: 0; }
-  iframe { display: block; width: 100%; height: 100%; border: 0; }
+  body { display: flex; flex-direction: column; }
+  iframe { display: block; flex: 1 1 auto; width: 100%; min-height: 0; border: 0; }
+  footer {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 44px;
+    font: 12px/1.4 Georgia, "Times New Roman", serif;
+    color: #6b6b6b;
+  }
+  footer a { color: inherit; text-underline-offset: 3px; }
+  footer a:hover { color: #1a1a1a; }
+  footer img { display: block; width: 24px; height: 24px; }
 </style>
 </head>
 <body>
 <iframe src="https://d385pc8be2cjhs.cloudfront.net/index.html" title="OpenAlice" allowfullscreen></iframe>
+<footer>
+  <span>MIT License · <a href="https://github.com/openalice-org/openalice.org" target="_blank" rel="noopener noreferrer">Source</a></span>
+  <a href="/" aria-label="OpenAlice"><img src="alice.png" alt="OpenAlice" width="24" height="24"></a>
+</footer>
 <noscript>
   <p><a href="https://d385pc8be2cjhs.cloudfront.net/index.html">Open OpenAlice</a></p>
 </noscript>
