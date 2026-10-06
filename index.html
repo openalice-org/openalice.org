@@ -27,6 +27,9 @@
   /* padding-top optically centres the serif text on the divider and mark:
      the caps' ink sits ~1.5px above the line box's centre. */
   footer .links { display: flex; align-items: center; gap: 8px; padding-top: 3px; }
+  footer .tagline-foot { font-style: italic; }
+  footer a.tagline-foot { text-decoration: none; }
+  footer a.tagline-foot:hover { text-decoration: underline; text-decoration-color: var(--muted); }
   footer .sep { color: var(--muted); }
   footer a { color: inherit; text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 3px; }
   footer a:hover { text-decoration-color: var(--ink); }
@@ -35,12 +38,10 @@
 <body>
 <iframe src="https://d385pc8be2cjhs.cloudfront.net/index.html" title="OpenAlice" allowfullscreen></iframe>
 <footer>
-  <a class="mark" href="/" aria-label="OpenAlice"><img src="alice.png" alt="OpenAlice" width="40" height="40"></a>
+  <a class="mark" href="index.html" target="_top" aria-label="OpenAlice"><img src="alice.png" alt="OpenAlice" width="40" height="40"></a>
   <span class="divider" aria-hidden="true"></span>
   <span class="links">
-    <span>MIT License</span>
-    <span class="sep" aria-hidden="true">·</span>
-    <a href="https://github.com/openalice-org/openalice.org" target="_blank" rel="noopener noreferrer">Source</a>
+    <a class="tagline-foot" href="about.html" target="_top">Charting the invisible college</a>
   </span>
 </footer>
 <noscript>
