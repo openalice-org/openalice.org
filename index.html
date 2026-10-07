@@ -34,6 +34,23 @@
   footer a { color: inherit; text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 3px; }
   footer a:hover { text-decoration-color: var(--ink); }
 </style>
+<!-- Matomo, self-hosted at matomo.slow-thoughts.com: cookieless and bannerless,
+     loaded only on the production host so local previews are never counted. -->
+<script>
+  if (location.hostname === 'openalice.org' || location.hostname === 'www.openalice.org') {
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['disableCookies']);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u = 'https://matomo.slow-thoughts.com/';
+      _paq.push(['setTrackerUrl', u + 'matomo.php']);
+      _paq.push(['setSiteId', '3']);
+      var g = document.createElement('script');
+      g.async = true; g.src = u + 'matomo.js'; document.head.appendChild(g);
+    })();
+  }
+</script>
 </head>
 <body>
 <iframe src="https://d385pc8be2cjhs.cloudfront.net/index.html" title="OpenAlice" allowfullscreen></iframe>
