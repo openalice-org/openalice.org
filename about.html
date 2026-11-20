@@ -15,6 +15,8 @@
   h2 { font-size: 21px; line-height: 1.3; font-weight: normal; font-style: italic; margin: 36px 0 10px; }
   .tagline { color: var(--muted); font-style: italic; margin: 0 0 40px; }
   p { margin: 0 0 20px; }
+  ul { margin: 0 0 20px; padding-left: 1.25em; }
+  li { margin: 0 0 6px; }
   a { color: inherit; text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 3px; }
   a:hover { text-decoration-color: var(--ink); }
   footer { flex: 0 0 auto; display: flex; align-items: center; justify-content: flex-end; gap: 16px;
@@ -67,7 +69,14 @@
 
 
   <h2>Code and data</h2>
-  <p>The code is open source under the MIT License, and the <a href="https://github.com/openalice-org/openalice.org" target="_blank" rel="noopener noreferrer">source is on GitHub</a>. The data is not part of the code. Each map is a separate shard, governed by the sources it was built from.</p>
+  <p>The code is open source under the MIT License, and it lives in three repositories:</p>
+  <ul>
+    <li><a href="https://github.com/openalice-org/open-alice" target="_blank" rel="noopener noreferrer">The map application</a></li>
+    <li><a href="https://github.com/openalice-org/open-alice-data" target="_blank" rel="noopener noreferrer">The data pipeline</a> and its <a href="https://github.com/openalice-org/open-alice-data/blob/main/docs/METHODOLOGY.md" target="_blank" rel="noopener noreferrer">methodology</a></li>
+    <li><a href="https://github.com/openalice-org/openalice.org" target="_blank" rel="noopener noreferrer">This website</a></li>
+  </ul>
+  <p>To contribute, start with the <a href="https://github.com/openalice-org/open-alice/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">contributor guide</a>.</p>
+  <p>The data is not part of the code. Each map is a separate shard, governed by the sources it was built from.</p>
 </main>
 <footer>
   <a class="mark" href="index.html" target="_top" aria-label="OpenAlice"><img src="alice.png" alt="OpenAlice" width="40" height="40"></a>
