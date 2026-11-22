@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Lab diary · OpenAlice</title>
+  <link rel="icon" href="../alice.png">
+  <style>
+    :root { color-scheme: light; --ink: #22241f; --muted: #6a6d65; --line: #dedfd9; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: #fafbf9; font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: inherit; text-underline-offset: .2em; }
+    a:hover { color: #42648b; }
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid #42648b; outline-offset: 5px; }
+    header, main, footer { max-width: 1680px; margin: auto; padding-inline: clamp(20px, 4vw, 64px); }
+    header { padding-top: 36px; padding-bottom: 42px; border-bottom: 1px solid var(--line); }
+    .brand { display: inline-flex; gap: 12px; align-items: center; text-decoration: none; font-size: 16px; }
+    .brand img { width: 36px; height: 36px; }
+    h1, h2, h3 { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-weight: 500; line-height: 1.15; }
+    h1 { font-size: clamp(40px, 5vw, 64px); margin: 24px 0 12px; }
+    header p { color: var(--muted); margin: 0; }
+    article { padding-block: 44px 64px; }
+    time { color: var(--muted); font-size: 15px; }
+    h2 { font-size: clamp(30px, 4vw, 44px); margin: 8px 0 26px; }
+    .entry-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; }
+    .entry-heading a { font-size: 14px; margin-bottom: 30px; color: var(--muted); }
+    .prototype { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: white; }
+    .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 18px; border-bottom: 1px solid var(--line); font-size: 14px; }
+    button { color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 7px; padding: 7px 12px; font: inherit; cursor: pointer; }
+    button:hover { background: #f0f1ed; }
+    iframe { display: block; border: 0; width: 100%; height: 82vh; min-height: 680px; background: #fff; }
+    iframe:fullscreen { height: 100vh; min-height: 0; }
+    .caption { color: var(--muted); font-size: 14px; margin: 12px 2px 32px; }
+    details { max-width: 1060px; }
+    summary { cursor: pointer; font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 26px; }
+    details p { color: var(--muted); margin: 10px 0 16px; }
+    video { width: 100%; display: block; background: #e9ebe7; border: 1px solid var(--line); border-radius: 12px; margin-top: 20px; }
+    footer { border-top: 1px solid var(--line); padding-block: 24px; font-size: 14px; color: var(--muted); }
+    @media(max-width: 700px) { header { padding-top: 20px; padding-bottom: 28px; } article { padding-top: 28px; } .entry-heading { display: block; } .entry-heading a { display: none; } .toolbar { flex-wrap: wrap; } iframe { min-height: 620px; height: 78vh; } }
+  </style>
+</head>
+<body>
+<header>
+  <a class="brand" href="../"><img src="../alice.png" alt="" width="36" height="36">OpenAlice</a>
+  <h1>Lab diary</h1>
+  <p>Sketches, experiments and working notes.</p>
+</header>
+<main>
+  <article id="researcher-view-2026-11-22">
+    <div class="entry-heading">
+      <div><time datetime="2026-11-22">22 November 2026</time><h2>Researcher view</h2></div>
+      <a href="#researcher-view-2026-11-22" aria-label="Link to the researcher view entry">Link to this entry</a>
+    </div>
+    <div class="prototype">
+      <div class="toolbar"><span>Interactive snapshot · 22 November 2026</span><button id="expand" type="button">Full screen</button></div>
+      <iframe id="prototype" src="assets/researcher-view-2026-11-22/index.html?personView=study&amp;person=A5035932611&amp;labNote=2026-11-22" title="Researcher view prototype: Current, Simplified and Embedding-based" allowfullscreen></iframe>
+    </div>
+    <p class="caption">Embedding positions in this sketch are simulated from paper titles. Best explored on a larger screen.</p>
+    <details open>
+      <summary>Watch the walkthrough</summary>
+      <video controls playsinline preload="metadata" poster="assets/researcher-view-poster.jpg">
+        <source src="assets/researcher-view-walkthrough-2026-11-22.mp4" type="video/mp4">
+        <a href="assets/researcher-view-walkthrough-2026-11-22.mp4">Download the walkthrough</a>
+      </video>
+    </details>
+  </article>
+</main>
+<footer>OpenAlice · Lab diary</footer>
+<script>
+  const prototype = document.getElementById('prototype');
+  const expand = document.getElementById('expand');
+  if (!prototype.requestFullscreen || !document.fullscreenEnabled) expand.hidden = true;
+  expand.addEventListener('click', async () => {
+    try { await prototype.requestFullscreen(); }
+    catch { expand.textContent = 'Full screen unavailable'; }
+  });
+</script>
+</body>
+</html>
