@@ -2,7 +2,7 @@
 
 One unlisted page at `/lab/` holds dated entries, newest first. The public site navigation does not link here. The page requests `noindex`; it is accessible without authentication.
 
-Each entry contains a frozen interactive snapshot and, when available, a walkthrough. Add future entries to `index.html`, with stable date-based anchors. Keep earlier snapshot assets unchanged so the diary records what was explored at that time.
+Each entry pairs a frozen interactive snapshot on the left with a walkthrough on the right. Both expand independently; narrow screens stack them. The hosted preview omits the optional lab-note query parameter, since the diary supplies its context. Add future entries to `index.html`, with stable date-based anchors. Keep earlier snapshot assets unchanged so the diary records what was explored at that time.
 
 ## 22 November 2026 — Researcher view
 
