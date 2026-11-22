@@ -1,0 +1,4 @@
+Vendored for the 22 November 2026 prototype snapshot.
+
+Stylesheet: https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css
+Licence: https://unpkg.com/@phosphor-icons/web@2.1.1/LICENSE
