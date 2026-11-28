@@ -26,11 +26,13 @@
     .entry-heading h2 a { text-decoration: none; }
     .entry-heading h2 a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
     .entry-media { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
-    .media-card { min-width: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: white; }
-    .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); font-size: 14px; min-height: 62px; }
-    .toolbar h3 { margin: 0; font: inherit; font-weight: 500; }
-    button, .expand-link { color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 7px; padding: 7px 12px; font: inherit; cursor: pointer; text-decoration: none; white-space: nowrap; }
-    button:hover, .expand-link:hover { background: #f0f1ed; }
+    .media-card { position: relative; min-width: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: white; }
+    .expand-link { position: absolute; z-index: 2; top: 8px; right: 8px; display: grid; place-items: center; width: 32px; height: 32px; padding: 7px; color: var(--muted); background: #fafbf9e6; border: 0; border-radius: 6px; cursor: pointer; text-decoration: none; }
+    .expand-link:hover { color: var(--ink); background: #fff; }
+    .expand-link svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .expand-link .collapse-icon { display: none; }
+    .media-card:fullscreen .expand-icon { display: none; }
+    .media-card:fullscreen .collapse-icon { display: block; }
     .media-stage { position: relative; width: 100%; aspect-ratio: 1280 / 900; overflow: hidden; background: #f1f2ee; }
     iframe { display: block; border: 0; position: absolute; width: 1280px; height: 900px; top: 50%; left: 50%; transform-origin: top left; transform: scale(var(--preview-scale, .4)) translate(-50%, -50%); background: #fff; }
     video { width: 100%; height: 100%; display: block; object-fit: contain; }
@@ -57,14 +59,14 @@
       <p class="source-link"><a href="https://github.com/openalice-org/inner-workings/tree/main/lab/2026-11-28-researcher-view" target="_blank" rel="noopener">Source code ↗</a> · Private GitHub archive</p>
     </div>
     <div class="entry-media">
-      <section class="media-card" id="prototype-card-2026-11-28" aria-labelledby="prototype-title-2026-11-28">
-        <div class="toolbar"><h3 id="prototype-title-2026-11-28">Interactive prototype</h3><a class="expand-link" data-expand="prototype-card-2026-11-28" href="assets/researcher-view-2026-11-28/lab.html?person=A5035932611&amp;view=current" target="_blank" rel="noopener" aria-label="Expand 28 November prototype">Expand</a></div>
+      <section class="media-card" id="prototype-card-2026-11-28" aria-label="Interactive prototype">
+        <a class="expand-link" data-expand="prototype-card-2026-11-28" href="assets/researcher-view-2026-11-28/lab.html?person=A5035932611&amp;view=current" target="_blank" rel="noopener" aria-label="Expand 28 November prototype"><svg class="expand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg><svg class="collapse-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4l-7 7m0-6v6h6M4 20l7-7m-6 0h6v6"/></svg></a>
         <div class="media-stage">
           <iframe src="assets/researcher-view-2026-11-28/lab.html?person=A5035932611&amp;view=current" title="Researcher view prototype: Current and Sketch, 28 November" allowfullscreen></iframe>
         </div>
       </section>
-      <section class="media-card" id="video-card-2026-11-28" aria-labelledby="video-title-2026-11-28">
-        <div class="toolbar"><h3 id="video-title-2026-11-28">Recorded walkthrough · 4:44</h3><a class="expand-link" data-expand="video-card-2026-11-28" href="assets/researcher-view-walkthrough-2026-11-28.mp4" target="_blank" rel="noopener" aria-label="Expand 28 November walkthrough">Expand</a></div>
+      <section class="media-card" id="video-card-2026-11-28" aria-label="Recorded walkthrough">
+        <a class="expand-link" data-expand="video-card-2026-11-28" href="assets/researcher-view-walkthrough-2026-11-28.mp4" target="_blank" rel="noopener" aria-label="Expand 28 November walkthrough"><svg class="expand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg><svg class="collapse-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4l-7 7m0-6v6h6M4 20l7-7m-6 0h6v6"/></svg></a>
         <div class="media-stage">
           <video controls playsinline preload="metadata" poster="assets/researcher-view-poster-2026-11-28.jpg" aria-label="Researcher view walkthrough, 28 November">
             <source src="assets/researcher-view-walkthrough-2026-11-28.mp4" type="video/mp4">
@@ -82,14 +84,14 @@
       <p class="source-link"><a href="https://github.com/openalice-org/inner-workings/tree/main/lab/2026-11-22-researcher-view" target="_blank" rel="noopener">Source code ↗</a> · Private GitHub archive</p>
     </div>
     <div class="entry-media">
-      <section class="media-card" id="prototype-card" aria-labelledby="prototype-title">
-        <div class="toolbar"><h3 id="prototype-title">Interactive prototype</h3><a class="expand-link" data-expand="prototype-card" href="assets/researcher-view-2026-11-22/index.html?personView=original&amp;person=A5035932611" target="_blank" rel="noopener" aria-label="Expand prototype">Expand</a></div>
+      <section class="media-card" id="prototype-card" aria-label="Interactive prototype">
+        <a class="expand-link" data-expand="prototype-card" href="assets/researcher-view-2026-11-22/index.html?personView=original&amp;person=A5035932611" target="_blank" rel="noopener" aria-label="Expand prototype"><svg class="expand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg><svg class="collapse-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4l-7 7m0-6v6h6M4 20l7-7m-6 0h6v6"/></svg></a>
         <div class="media-stage" id="prototype-stage">
           <iframe id="prototype" loading="lazy" src="assets/researcher-view-2026-11-22/index.html?personView=original&amp;person=A5035932611" title="Researcher view prototype: Current, Simplified and Embedding-based" allowfullscreen></iframe>
         </div>
       </section>
-      <section class="media-card" id="video-card" aria-labelledby="video-title">
-        <div class="toolbar"><h3 id="video-title">Recorded walkthrough · 3:48</h3><a class="expand-link" data-expand="video-card" href="assets/researcher-view-walkthrough-2026-11-22.mp4" target="_blank" rel="noopener" aria-label="Expand walkthrough">Expand</a></div>
+      <section class="media-card" id="video-card" aria-label="Recorded walkthrough">
+        <a class="expand-link" data-expand="video-card" href="assets/researcher-view-walkthrough-2026-11-22.mp4" target="_blank" rel="noopener" aria-label="Expand walkthrough"><svg class="expand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-7 7M10 20H4v-6M4 20l7-7"/></svg><svg class="collapse-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4l-7 7m0-6v6h6M4 20l7-7m-6 0h6v6"/></svg></a>
         <div class="media-stage">
           <video controls playsinline preload="metadata" poster="assets/researcher-view-poster.jpg" aria-label="Researcher view walkthrough">
             <source src="assets/researcher-view-walkthrough-2026-11-22.mp4" type="video/mp4">
@@ -121,10 +123,13 @@
   for (const link of document.querySelectorAll('[data-expand]')) {
     const card = document.getElementById(link.dataset.expand);
     if (!card.requestFullscreen || !document.fullscreenEnabled) continue;
+    link.title = 'Expand';
     const label = link.getAttribute('aria-label');
     const button = document.createElement('button');
     button.type = 'button';
-    button.textContent = 'Expand';
+    button.className = 'expand-link';
+    button.innerHTML = link.innerHTML;
+    button.title = 'Expand';
     button.setAttribute('aria-label', label);
     link.replaceWith(button);
     button.addEventListener('click', async () => {
@@ -138,7 +143,7 @@
     });
     document.addEventListener('fullscreenchange', () => {
       const expanded = document.fullscreenElement === card;
-      button.textContent = expanded ? 'Close' : 'Expand';
+      button.title = expanded ? 'Close expanded view' : 'Expand';
       button.setAttribute('aria-label', expanded ? 'Close expanded view' : label);
       if (expanded) button.focus();
     });
