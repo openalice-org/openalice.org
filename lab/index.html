@@ -21,7 +21,6 @@
     h1 { font-size: clamp(40px, 5vw, 64px); margin: 24px 0 12px; }
     header p { color: var(--muted); margin: 0; }
     article { padding-block: 44px 64px; }
-    time { color: var(--muted); font-size: 15px; }
     h2 { font-size: clamp(30px, 4vw, 44px); margin: 8px 0 26px; }
     .entry-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; }
     .entry-heading a { font-size: 14px; margin-bottom: 30px; color: var(--muted); }
@@ -49,16 +48,41 @@
   <p>Sketches, experiments and working notes.</p>
 </header>
 <main>
+  <article id="researcher-view-2026-11-28">
+    <div class="entry-heading">
+      <h2><time datetime="2026-11-28">28 November 2026</time></h2>
+      <a href="#researcher-view-2026-11-28" aria-label="Link to the 28 November entry">Link to this entry</a>
+    </div>
+    <div class="entry-media">
+      <section class="media-card" id="prototype-card-2026-11-28" aria-labelledby="prototype-title-2026-11-28">
+        <div class="toolbar"><h3 id="prototype-title-2026-11-28">Interactive prototype</h3><a class="expand-link" data-expand="prototype-card-2026-11-28" href="assets/researcher-view-2026-11-28/lab.html?person=A5035932611&amp;view=current" target="_blank" rel="noopener" aria-label="Expand 28 November prototype">Expand</a></div>
+        <div class="media-stage">
+          <iframe src="assets/researcher-view-2026-11-28/lab.html?person=A5035932611&amp;view=current" title="Researcher view prototype: Current and Sketch, 28 November" allowfullscreen></iframe>
+        </div>
+      </section>
+      <section class="media-card" id="video-card-2026-11-28" aria-labelledby="video-title-2026-11-28">
+        <div class="toolbar"><h3 id="video-title-2026-11-28">Recorded walkthrough · 4:44</h3><a class="expand-link" data-expand="video-card-2026-11-28" href="assets/researcher-view-walkthrough-2026-11-28.mp4" target="_blank" rel="noopener" aria-label="Expand 28 November walkthrough">Expand</a></div>
+        <div class="media-stage">
+          <video controls playsinline preload="metadata" poster="assets/researcher-view-poster-2026-11-28.jpg" aria-label="Researcher view walkthrough, 28 November">
+            <source src="assets/researcher-view-walkthrough-2026-11-28.mp4" type="video/mp4">
+            <a href="assets/researcher-view-walkthrough-2026-11-28.mp4">Download the walkthrough</a>
+          </video>
+        </div>
+      </section>
+    </div>
+    <p class="caption">A quieter researcher view, using the topic map. The optional trajectory connects each year’s most-cited paper.</p>
+  </article>
+
   <article id="researcher-view-2026-11-22">
     <div class="entry-heading">
-      <div><time datetime="2026-11-22">22 November 2026</time><h2>Researcher view</h2></div>
+      <h2><time datetime="2026-11-22">22 November 2026</time></h2>
       <a href="#researcher-view-2026-11-22" aria-label="Link to the researcher view entry">Link to this entry</a>
     </div>
     <div class="entry-media">
       <section class="media-card" id="prototype-card" aria-labelledby="prototype-title">
         <div class="toolbar"><h3 id="prototype-title">Interactive prototype</h3><a class="expand-link" data-expand="prototype-card" href="assets/researcher-view-2026-11-22/index.html?personView=original&amp;person=A5035932611" target="_blank" rel="noopener" aria-label="Expand prototype">Expand</a></div>
         <div class="media-stage" id="prototype-stage">
-          <iframe id="prototype" src="assets/researcher-view-2026-11-22/index.html?personView=original&amp;person=A5035932611" title="Researcher view prototype: Current, Simplified and Embedding-based" allowfullscreen></iframe>
+          <iframe id="prototype" loading="lazy" src="assets/researcher-view-2026-11-22/index.html?personView=original&amp;person=A5035932611" title="Researcher view prototype: Current, Simplified and Embedding-based" allowfullscreen></iframe>
         </div>
       </section>
       <section class="media-card" id="video-card" aria-labelledby="video-title">
@@ -76,11 +100,21 @@
 </main>
 <footer>OpenAlice · Lab diary</footer>
 <script>
+  // Keep the latest chapter first, including when new entries are added below older ones.
+  const diary = document.querySelector('main');
+  const entries = [...diary.querySelectorAll(':scope > article')];
+  entries.sort((a, b) => b.querySelector('time').dateTime.localeCompare(a.querySelector('time').dateTime));
+  diary.append(...entries);
+
   // Keep the frozen desktop layout legible as a miniature, without changing its assets.
-  const stage = document.getElementById('prototype-stage');
-  new ResizeObserver(([entry]) => {
-    stage.style.setProperty('--preview-scale', entry.contentRect.width / 1280);
-  }).observe(stage);
+  const previewObserver = new ResizeObserver(entries => {
+    for (const entry of entries) {
+      entry.target.style.setProperty('--preview-scale', entry.contentRect.width / 1280);
+    }
+  });
+  for (const frame of document.querySelectorAll('.media-stage > iframe')) {
+    previewObserver.observe(frame.parentElement);
+  }
 
   for (const link of document.querySelectorAll('[data-expand]')) {
     const card = document.getElementById(link.dataset.expand);

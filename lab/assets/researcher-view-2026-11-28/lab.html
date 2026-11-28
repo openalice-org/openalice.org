@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Researcher view · 28 November 2026</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f7f7f4; color: #181816; font-family: system-ui, sans-serif; }
+    header { height: 54px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #deded9; }
+    [role=tablist] { display: flex; gap: 4px; padding: 3px; border: 1px solid #deded9; border-radius: 7px; background: #fff; }
+    button { font: inherit; font-size: 14px; border: 0; background: transparent; border-radius: 4px; padding: 6px 22px; cursor: pointer; color: inherit; }
+    button[aria-selected=true] { color: #fff; background: #181816; }
+    button:focus-visible { outline: 2px solid #426594; outline-offset: 2px; }
+    main, section, iframe { width: 100%; height: calc(100dvh - 54px); border: 0; }
+    iframe { display: block; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav role="tablist" aria-label="Researcher view comparison">
+      <button role="tab" id="tab-current" aria-controls="panel-current" aria-selected="true">Current</button>
+      <button role="tab" id="tab-sketch" aria-controls="panel-sketch" aria-selected="false" tabindex="-1">Sketch</button>
+    </nav>
+  </header>
+  <main>
+    <section role="tabpanel" id="panel-current" aria-labelledby="tab-current"><iframe aria-label="Current researcher view" allow="fullscreen"></iframe></section>
+    <section role="tabpanel" id="panel-sketch" aria-labelledby="tab-sketch" hidden><iframe aria-label="Researcher view sketch" allow="fullscreen"></iframe></section>
+  </main>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const candidate = params.get('person');
+    const person = candidate && /^A\d+$/.test(candidate) ? candidate : 'A5035932611';
+    const names = ['current', 'sketch'];
+    function choose(name, focus = false) {
+      for (const view of names) {
+        const active = view === name;
+        const button = document.getElementById('tab-' + view);
+        const panel = document.getElementById('panel-' + view);
+        button.setAttribute('aria-selected', String(active));
+        button.tabIndex = active ? 0 : -1;
+        panel.hidden = !active;
+        const frame = panel.querySelector('iframe');
+        if (active && !frame.getAttribute('src')) frame.src = (view === 'current' ? './current/index.html' : './index.html') + '?person=' + person;
+        if (active && focus) button.focus();
+      }
+      const url = new URL(location.href);
+      url.searchParams.set('view', name);
+      url.searchParams.set('person', person);
+      history.replaceState(null, '', url);
+    }
+    for (const name of names) {
+      const tab = document.getElementById('tab-' + name);
+      tab.addEventListener('click', () => choose(name));
+      tab.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        choose(event.key === 'Home' ? 'current' : event.key === 'End' ? 'sketch' : names[1 - names.indexOf(name)], true);
+      });
+    }
+    choose(params.get('view') === 'sketch' ? 'sketch' : 'current');
+  </script>
+</body>
+</html>
